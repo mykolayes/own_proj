@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>Pizza</title>
+    <title>Character Price Calculator</title>
 
     <!-- Bootsrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -36,16 +36,56 @@
 
                     <div class="caption"><h3>General</h3>
 
+                        <!--<p class="text-inside-prop-card">-->
+                            <!--Faction, race, gender, class, guild.-->
+                        <!--</p>-->
                         <p class="text-inside-prop-card">
-                            Faction, race, gender, class, guild.
+                            Select your region:
                         </p>
-                        <form action="">
+                        <form action="" id="region">
+                            <input type="radio" name="region" value="US"> US<br>
+                            <input type="radio" name="region" value="EU"> EU<br>
+                        </form>
+                            <p class="text-inside-prop-card">
+                                Select your faction:
+                            </p>
+                        <form action="" id="faction">
                             <input type="radio" name="faction" value="Alliance"> Alliance<br>
                             <input type="radio" name="faction" value="Horde"> Horde<br>
                         </form>
-                        <form action="">
+                            <p class="text-inside-prop-card">
+                                Select char's gender:
+                            </p>
+                        <form action="" id="gender">
                             <input type="radio" name="gender" value="male"> Male<br>
                             <input type="radio" name="gender" value="female"> Female<br>
+                        </form>
+                        <p></p>
+                        <span class="text-inside-prop-card">
+                            Select char's class:
+                        </span>
+                        <select id="char_class">
+                            <option disabled selected value style="display:none;"> - </option>
+                            <option value="druid">Druid</option>
+                            <option value="hunter">Hunter</option>
+                            <option value="mage">Mage</option>
+                            <option value="paladin">Paladin</option>
+                            <option value="priest">Priest</option>
+                            <option value="rogue">Rogue</option>
+                            <option value="shaman">Shaman</option>
+                            <option value="warlock">Warlock</option>
+                            <option value="warrior">Warrior</option>
+                        </select>
+                        <p class="text-inside-prop-card">
+                        </p>
+                        <span class="text-inside-prop-card currencies-text">
+                            Character's level:
+                        </span>
+                        <input type="number" id="lvl" min="1" name="level" max="80" value="" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <p class="text-inside-prop-card">
+                        </p>
+                        <form action="">
+                            <input type="checkbox" name="guild" value="yes"> Character is a member of a guild<br>
                         </form>
                     </div>
                 </div>
@@ -57,23 +97,77 @@
 
                     <div class="caption"><h3>Currencies</h3>
 
-                        <p class="text-inside-prop-card">
-                            Gold, points, emblems.
-                        </p>
+                        <!--<p class="text-inside-prop-card">-->
+                            <!--Gold, points, emblems.-->
+                        <!--</p>-->
+                        <span class="text-inside-prop-card currencies-text">
+                            Gold amount:
+                        </span>
+                            <input type="number" class="zero-default" min="0" name="gold" max="999999" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card currencies-text">
+                            Badges amount:
+                        </span>
+                            <input type="number" class="zero-default" min="0" name="badges" max="9999" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card currencies-text">
+                            Emblems amount:
+                        </span>
+                        <input type="number" min="0" class="zero-default" name="emblems" max="9999" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card currencies-text">
+                            Honor pts amount:
+                        </span>
+                        <input type="number" min="0" class="zero-default" name="honor_pts" max="99999" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card currencies-text">
+                            Arena pts amount:
+                        </span>
+                        <input type="number" min="0" class="zero-default" name="arena_pts" max="9999" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+
                     </div>
                 </div>
             </div>
+            <!--script for checking inputs' values-->
+            <script>
+                function maxLengthCheck(object) {
+                    if (object.value.length > object.max.length)
+                        object.value = object.value.slice(0, object.max.length)
+                }
 
-
+                function isNumeric (evt) {
+                    var theEvent = evt || window.event;
+                    var key = theEvent.keyCode || theEvent.which;
+                    key = String.fromCharCode (key);
+                    var regex = /[0-9]|\./;
+                    if ( !regex.test(key) ) {
+                        theEvent.returnValue = false;
+                        if(theEvent.preventDefault) theEvent.preventDefault();
+                    }
+                }
+            </script>
+            <!---->
             <div class="col-md-6 col-lg-4">
                 <div class="thumbnail property-card">
                     <img src="assets/images/achievement_general.jpg">
 
                     <div class="caption"><h3>Achievements</h3>
 
-                        <p class="text-inside-prop-card">
-                            Achievements, mounts, pets, other collectables.
-                        </p>
+                        <!--<p class="text-inside-prop-card">-->
+                            <!--Achievements, mounts, pets, other collectables.-->
+                        <!--</p>-->
+                        <span class="text-inside-prop-card achievements-text">
+                            Achievement pts (cap - 10.500):
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="achievements" max="10500" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card achievements-text">
+                            Mounts collected (cap - 190):
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="mounts" max="190" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card achievements-text">
+                            Pets collected (cap - 178):
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="pets" max="178" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card achievements-text">
+                            Toys collected (cap - 50):
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="toys" max="50" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
                     </div>
                 </div>
             </div>
@@ -84,9 +178,53 @@
 
                     <div class="caption"><h3>PvP</h3>
 
-                        <p class="text-inside-prop-card">
-                            Highest rank earned / amount of highest ranks earned.
-                        </p>
+                        <!--<p class="text-inside-prop-card">-->
+                            <!--Highest rank earned / amount of highest ranks earned.-->
+                        <!--</p>-->
+                        <span class="text-inside-prop-card">
+                            Select highest PvP rank earned:
+                        </span>
+                        <select id="pvp_rank">
+                            <option disabled selected value style="display:none;"> - </option>
+                            <option value="challenger">Challenger</option>
+                            <option value="rival">Rival</option>
+                            <option value="duelist">Duelist</option>
+                            <option value="gladiator">Gladiator</option>
+                            <option value="r1">R1</option>
+                        </select>
+                        <p></p>
+                        <span class="text-inside-prop-card">
+                            Times earned:
+                        </span>
+                        <select id="pvp_rank_times">
+                            <!--<option disabled selected value style="display:none;"> - </option>-->
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                        <br>
+                        <span class="text-inside-prop-card achievements-text">
+                            Number of honor kills (HKs):
+                        </span>
+                        <input type="number" min="0" class="zero-default" name="hks" max="1000000" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card achievements-text">
+                            Max 2v2 rating:
+                        </span>
+                        <input type="number" min="0" class="zero-default" name="2v2" max="3000" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card achievements-text">
+                            Max 3v3 rating:
+                        </span>
+                        <input type="number" min="0" class="zero-default" name="3v3" max="3000" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+                        <span class="text-inside-prop-card achievements-text">
+                            Max 5v5 rating:
+                        </span>
+                        <input type="number" min="0" class="zero-default" name="5v5" max="3000" value="0" style="width: 100px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><br>
+
                     </div>
                 </div>
             </div>
@@ -98,8 +236,41 @@
                     <div class="caption"><h3>PvE</h3>
 
                         <p class="text-inside-prop-card">
-                            Raid tier progress.
+                            Current raid: ICC. Number of bosses: 12.
                         </p>
+                        <!--<p class="text-inside-prop-card">-->
+                            <!--Raid tier progression.-->
+                        <!--</p>-->
+                        <span class="text-inside-prop-card currencies-text">
+                            10 N progression:
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="10n" max="12" value="0" style="width: 40px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><span> / 12</span><br>
+                        <span class="text-inside-prop-card currencies-text">
+                            25 N progression:
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="25n" max="12" value="0" style="width: 40px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><span> / 12</span><br>
+                        <span class="text-inside-prop-card currencies-text">
+                            10 HC progression:
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="10hc" max="12" value="0" style="width: 40px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><span> / 12</span><br>
+                        <span class="text-inside-prop-card currencies-text">
+                            25 HC progression:
+                        </span>
+                        <input type="number" class="zero-default" min="0" name="25hc" max="12" value="0" style="width: 40px;" onkeypress="return isNumeric(event)" oninput="maxLengthCheck(this)"><span> / 12</span><br>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="thumbnail property-card">
+                    <img src="assets/images/inv_inscription_parchmentvar06.jpg">
+
+                    <div class="caption"><h3>Other</h3>
+
+                        <p class="text-inside-prop-card">
+                        </p>
+                        <textarea rows="10" cols="44" placeholder="Your note for the auction." class="auction-note" id="note-area"></textarea>
                     </div>
                 </div>
             </div>
@@ -117,6 +288,10 @@
                 0
             </span>
             <br>
+            <p class="btn btn-primary btn-sell">
+                <span class="order-text">Sell</span>
+            </p>
+            <br>
             <br>
             <span class="credits">
                 No rights reserved. All credits go to Blizzard Entertainment.
@@ -132,7 +307,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!--Own JavaScript -->
-<script type="text/javascript"
-        src="assets/js/main.js"> </script>
+<script type="text/javascript" src="assets/js/main.js"> </script>
 </body>
 </html>

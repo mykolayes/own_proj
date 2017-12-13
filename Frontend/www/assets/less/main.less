@@ -1,6 +1,7 @@
 @mainColor: blue;
 @main-logo-height: 200px;
 @mainFont: "Friz Quadrata TT Regular";
+@my-min-page-width: 450px;
 
 @import "propeties/property-card";
 
@@ -11,7 +12,14 @@
 
 
 
-
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 
 
 //
@@ -25,11 +33,13 @@
   width: 100%;
   height: (@main-logo-height)-150;
   text-align: center;
-  min-width: 450px;
+  min-width: @my-min-page-width;
   //border-bottom: solid;
   //border-bottom-width: 0.3px;
+  margin-top: 10px;
   padding-bottom: 10px;
   margin-bottom: 10px;
+
 }
   .main-logo-img{
   //height: 125px;
@@ -61,15 +71,37 @@
   background-image: url("../images/STV2.png");
   background-size: cover;
 //  background-color: red;
+  min-width: @my-min-page-width;
 }
   .char-properties{
     //vertical-align: top;
     min-width: 300px;
     margin:auto;
   }
+
     .text-inside-prop-card{
       //font-family: @mainFont;
       font-size: 15px;
+      margin-top: 7px;
+      margin-bottom: 0;
+    }
+
+    .currencies-text{
+      display: inline-block;
+      min-width: 130px;
+      max-width: 130px;
+      width: 130px;
+    }
+    .achievements-text{
+      display: inline-block;
+      //min-width: 130px;
+      //max-width: 130px;
+      width: 220px;
+    }
+
+    .auction-note{
+      resize: none;
+      width: 100%;
     }
 ///////////////
 
@@ -84,6 +116,7 @@
   border-top-width: 0.3px;
   text-align: center;
   display: table;
+  min-width: @my-min-page-width;
 }
   .outer-container-for-price{
     display: table;
@@ -104,6 +137,14 @@
         margin-left: auto;
         margin-right: auto;
         width: 100%;
+      }
+      .btn-sell{
+        width: 100px;
+        background-color: black !important;
+        border-color: white;
+        font-size: 20px;
+        font-family: @mainFont;
+        //color: black;
       }
       .credits {
         font-size: 14px;

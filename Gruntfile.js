@@ -38,7 +38,7 @@ module.exports = function(grunt) {
             //На зміни в яких файлах реагувати
             files: ['Frontend/src/**/*.js', 'Frontend/**/*.ejs'],
             //Які завдання виконувати під час зміни в файлах
-            tasks: ['browserify:propeties']
+            tasks: ['browserify:pizza']
         }
     };
 
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
     //Список завданнь по замовчування
     grunt.registerTask('default',
         [
-            'browserify:propeties',
+            'browserify:pizza',
             //Інші завдання які необхідно виконати
         ]
     );
