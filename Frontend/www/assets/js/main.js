@@ -14,6 +14,8 @@ var hks = twos = threes = fives = 0;
 var tenN = tw_fiveN = tenHC = tw_fiveHC = 0;
 var note;
 
+// var ebay = require('ebay-api');
+
 $(function(){
     //This code will execute when the page is ready
     // var PizzaMenu = require('./pizza/PizzaMenu');
@@ -157,7 +159,7 @@ $(function(){
     });
 
     $(".btn-sell").click(function(){
-       //  if(lvl){
+        //  if(lvl){
        // alert(region);
        //  }
         //price_calc_logic();
